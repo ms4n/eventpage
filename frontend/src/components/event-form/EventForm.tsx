@@ -3,6 +3,9 @@ import { EventFormData } from "../../types/event";
 import BgColorPicker from "./BgColorPicker";
 import DateTimePicker from "./DateTimePicker";
 import LocationPicker from "./LocationPicker";
+import DescriptionInput from "./DescriptionInput";
+import EventOptions from "./EventOptions";
+import { Button } from "@/components/ui/button";
 
 const EventForm: React.FC = () => {
   const [formData, setFormData] = useState<EventFormData>({
@@ -68,59 +71,27 @@ const EventForm: React.FC = () => {
             onChange={(location) => setFormData({ ...formData, location })}
           />
 
-          <textarea
-            placeholder="Add Description"
+          <DescriptionInput
             value={formData.description}
-            onChange={(e) =>
-              setFormData({ ...formData, description: e.target.value })
-            }
-            className="w-full p-3 bg-opacity-20 bg-white rounded-lg resize-none h-24"
+            onChange={(description) => setFormData({ ...formData, description })}
           />
 
-          <div className="space-y-2 flex-grow">
-            <h3 className="font-semibold">Event Options</h3>
+          <EventOptions
+            requireApproval={formData.requireApproval}
+            onRequireApprovalChange={(value) =>
+              setFormData({ ...formData, requireApproval: value })
+            }
+            capacity={formData.capacity}
+            tickets={formData.tickets}
+          />
 
-            <div className="flex justify-between items-center">
-              <span>Tickets</span>
-              <div className="flex items-center gap-2">
-                <span>Free</span>
-                <button type="button" className="text-blue-500">
-                  Edit
-                </button>
-              </div>
-            </div>
-
-            <div className="flex justify-between items-center">
-              <span>Require Approval</span>
-              <input
-                type="checkbox"
-                checked={formData.requireApproval}
-                onChange={(e) =>
-                  setFormData({
-                    ...formData,
-                    requireApproval: e.target.checked,
-                  })
-                }
-              />
-            </div>
-
-            <div className="flex justify-between items-center">
-              <span>Capacity</span>
-              <div className="flex items-center gap-2">
-                <span>Unlimited</span>
-                <button type="button" className="text-blue-500">
-                  Edit
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <button
-            type="submit"
-            className="w-full py-3 bg-white text-black rounded-lg font-semibold mt-auto"
+          <Button 
+            type="submit" 
+            className="w-full mt-6 bg-white text-black hover:bg-white/90 font-semibold"
+            size="lg"
           >
             Create Event
-          </button>
+          </Button>
         </div>
       </div>
     </form>

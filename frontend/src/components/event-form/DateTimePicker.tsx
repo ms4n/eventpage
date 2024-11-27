@@ -1,5 +1,3 @@
-"use client";
-
 import * as React from "react";
 import { DateTimeButton } from "./DateTimeButton";
 import { Globe } from "lucide-react";
@@ -74,7 +72,7 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
       <div className="col-span-1">
         <div className="flex h-full items-center gap-2 text-sm text-white bg-white/10 py-1 px-4 rounded-lg">
           <div className="flex flex-col">
-            <Globe size={16} className="mb-1" />
+            <Globe size={16} className="mb-1 text-white/70" />
             <span>{timezone}</span>
             <span>{location}</span>
           </div>
