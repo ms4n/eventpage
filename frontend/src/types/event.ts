@@ -2,12 +2,12 @@ export interface EventFormData {
   name: string;
   startDate: Date;
   endDate: Date;
-  location?: string;
-  description?: string;
   bgColor: string;
   isPublic: boolean;
   requireApproval: boolean;
-  capacity: number | 'unlimited';
+  capacity: string;
+  description?: string;
+  location?: string;
   tickets: {
     isFree: boolean;
     price?: number;

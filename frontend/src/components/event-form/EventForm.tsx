@@ -73,7 +73,9 @@ const EventForm: React.FC = () => {
 
           <DescriptionInput
             value={formData.description}
-            onChange={(description) => setFormData({ ...formData, description })}
+            onChange={(description) =>
+              setFormData({ ...formData, description })
+            }
           />
 
           <EventOptions
@@ -82,16 +84,24 @@ const EventForm: React.FC = () => {
               setFormData({ ...formData, requireApproval: value })
             }
             capacity={formData.capacity}
+            onCapacityChange={(capacity) =>
+              setFormData({ ...formData, capacity })
+            }
             tickets={formData.tickets}
+            onTicketsChange={(tickets) =>
+              setFormData({ ...formData, tickets })
+            }
           />
 
-          <Button 
-            type="submit" 
-            className="w-full mt-6 bg-white text-black hover:bg-white/90 font-semibold"
-            size="lg"
-          >
-            Create Event
-          </Button>
+          <div className="pt-6">
+            <Button
+              type="submit"
+              className="w-full bg-white text-black hover:bg-white/90 font-semibold"
+              size="lg"
+            >
+              Create Event
+            </Button>
+          </div>
         </div>
       </div>
     </form>
