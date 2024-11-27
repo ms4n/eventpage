@@ -1,13 +1,10 @@
 import React from "react";
-import { Button } from "./components/ui/button";
+import EventForm from "./components/event-form/EventForm";
 
 const App = () => {
   return (
-    <div className="flex items-center justify-center h-screen">
-      <div className="flex flex-col">
-        App
-        <Button>button check</Button>
-      </div>
+    <div className="h-full bg-[#3D2B05] text-white flex items-center justify-center">
+      <EventForm />
     </div>
   );
 };
