@@ -31,17 +31,19 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
                 <div className="w-1.5 h-1.5 rounded-full bg-white" />
                 <span className="text-sm text-white">Start</span>
               </div>
-              <div className="flex">
-                <DateTimeButton
-                  date={startDate}
-                  onChange={onStartDateChange}
-                  type="date"
-                />
-                <DateTimeButton
-                  date={startDate}
-                  onChange={onStartDateChange}
-                  type="time"
-                />
+              <div className="flex items-center">
+                <div className="flex flex-1">
+                  <DateTimeButton
+                    date={startDate}
+                    onChange={onStartDateChange}
+                    type="date"
+                  />
+                  <DateTimeButton
+                    date={startDate}
+                    onChange={onStartDateChange}
+                    type="time"
+                  />
+                </div>
               </div>
             </div>
 
@@ -50,17 +52,19 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
                 <div className="w-1.5 h-1.5 rounded-full bg-white/50" />
                 <span className="text-sm text-white">End</span>
               </div>
-              <div className="flex">
-                <DateTimeButton
-                  date={endDate}
-                  onChange={onEndDateChange}
-                  type="date"
-                />
-                <DateTimeButton
-                  date={endDate}
-                  onChange={onEndDateChange}
-                  type="time"
-                />
+              <div className="flex items-center">
+                <div className="flex flex-1">
+                  <DateTimeButton
+                    date={endDate}
+                    onChange={onEndDateChange}
+                    type="date"
+                  />
+                  <DateTimeButton
+                    date={endDate}
+                    onChange={onEndDateChange}
+                    type="time"
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -69,8 +73,8 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
 
       <div className="col-span-1">
         <div className="flex h-full items-center gap-2 text-sm text-white bg-white/10 py-1 px-4 rounded-lg">
-          <Globe size={16} className="mb-1" />
           <div className="flex flex-col">
+            <Globe size={16} className="mb-1" />
             <span>{timezone}</span>
             <span>{location}</span>
           </div>
