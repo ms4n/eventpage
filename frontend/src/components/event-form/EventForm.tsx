@@ -35,10 +35,10 @@ const EventForm: React.FC = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="w-full max-w-4xl mx-auto h-[600px] flex flex-col"
+      className="w-full max-w-4xl mx-auto min-h-[600px] flex flex-col px-4"
     >
-      <div className="flex gap-12 h-full px-4">
-        <div className="w-1/3">
+      <div className="flex flex-col lg:flex-row lg:gap-12">
+        <div className="w-full lg:w-1/3 mb-6 lg:mb-0">
           <BgColorPicker
             color={formData.bgColor}
             onChange={(color) => setFormData({ ...formData, bgColor: color })}

@@ -29,10 +29,8 @@ const BgColorPicker: React.FC<BgColorPickerProps> = ({ color, onChange }) => {
   return (
     <div className="relative" ref={pickerRef}>
       <div
-        className="p-4 border rounded-lg flex items-center justify-center"
+        className="p-4 border rounded-lg flex items-center justify-center w-full lg:w-[300px] h-[200px] lg:h-[300px]"
         style={{
-          width: "300px",
-          height: "300px",
           backgroundColor: color,
           border: "2px solid rgba(255, 255, 255, 0.3)",
           backdropFilter: "blur(10px)",
@@ -41,8 +39,7 @@ const BgColorPicker: React.FC<BgColorPickerProps> = ({ color, onChange }) => {
       ></div>
       {isOpen && (
         <div
-          className="absolute left-0 mt-2 z-10 bg-white p-3 rounded-lg shadow-lg"
-          style={{ width: "300px" }}
+          className="absolute left-0 mt-2 z-10 bg-white p-3 rounded-lg shadow-lg w-full lg:w-[300px]"
         >
           <HexColorPicker
             color={color}

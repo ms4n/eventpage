@@ -1,4 +1,3 @@
-import React from "react";
 import EventForm from "./components/event-form/EventForm";
 
 const App = () => {

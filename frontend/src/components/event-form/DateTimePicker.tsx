@@ -22,8 +22,8 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
   location,
 }) => {
   return (
-    <div className="grid grid-cols-3 gap-4">
-      <div className="col-span-2">
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+      <div className="col-span-1 lg:col-span-2">
         <div className="flex h-full items-start gap-4 rounded-lg bg-white/10 py-1 pl-4 pr-1">
           <div className="flex-1 space-y-1">
             <div className="flex items-center justify-between">
@@ -69,8 +69,8 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
 
       <div className="col-span-1">
         <div className="flex h-full items-center gap-2 text-sm text-white bg-white/10 py-1 px-4 rounded-lg">
+          <Globe size={16} className="mb-1" />
           <div className="flex flex-col">
-            <Globe size={16} className="mb-1" />
             <span>{timezone}</span>
             <span>{location}</span>
           </div>
