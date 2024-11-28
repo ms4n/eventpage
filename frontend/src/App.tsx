@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter, Routes, Route, Link, useLocation } from "react-router-dom";
 import { Ticket } from "lucide-react";
 import EventForm from "./components/event-form/EventForm";
@@ -28,6 +28,10 @@ const Navigation = () => {
 };
 
 const App = () => {
+  useEffect(() => {
+    document.title = "Event Page";
+  }, []);
+
   return (
     <BrowserRouter>
       <div className="min-h-screen bg-[#3D2B05] text-white">
