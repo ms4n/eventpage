@@ -4,6 +4,7 @@ import { Ticket } from "lucide-react";
 import EventForm from "./components/event-form/EventForm";
 import EventList from "./components/events/EventList";
 import EventDetail from "./components/events/EventDetail";
+import { Toaster } from "./components/ui/toaster";
 
 const Navigation = () => {
   const location = useLocation();
@@ -41,6 +42,7 @@ const App = () => {
           <Route path="/events" element={<EventList />} />
           <Route path="/events/:id" element={<EventDetail />} />
         </Routes>
+        <Toaster />
       </div>
     </BrowserRouter>
   );

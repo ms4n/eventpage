@@ -1,6 +1,8 @@
 import express from "express";
 import cors from "cors";
 import eventRoutes from "./routes/event.routes";
+import placesRoutes from './routes/places.routes';
+import openaiRoutes from './routes/openai.routes';
 import { errorHandler } from "./middleware/error";
 import { ErrorRequestHandler } from "express";
 
@@ -33,6 +35,8 @@ app.use(
 
 app.use(express.json());
 app.use("/api", eventRoutes);
+app.use('/api/places', placesRoutes);
+app.use('/api/openai', openaiRoutes);
 
 app.use(errorHandler as unknown as ErrorRequestHandler);
 

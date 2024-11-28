@@ -8,6 +8,7 @@ export interface EventFormData {
   capacity: string;
   description?: string;
   location?: string;
+  placeId?: string;
   tickets: {
     isFree: boolean;
     price?: number;
@@ -30,6 +31,7 @@ export interface Event {
   require_approval: boolean;
   capacity: string;
   location?: string;
+  placeId?: string;
   tickets: {
     id: string;
     event_id: string;

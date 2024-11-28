@@ -18,6 +18,7 @@ const EventForm: React.FC = () => {
     isPublic: true,
     requireApproval: false,
     capacity: "unlimited",
+    location: "",
     tickets: {
       isFree: true,
     },
@@ -91,14 +92,19 @@ const EventForm: React.FC = () => {
 
           <LocationPicker
             location={formData.location}
-            onChange={(location) => setFormData({ ...formData, location })}
+            onChange={(location, placeId) =>
+              setFormData({ ...formData, location, placeId })
+            }
           />
 
           <DescriptionInput
-            value={formData.description}
+            value={formData.description || ""}
             onChange={(description) =>
               setFormData({ ...formData, description })
             }
+            eventName={formData.name}
+            location={formData.location}
+            className="min-h-[150px]"
           />
 
           <EventOptions
