@@ -26,7 +26,11 @@ export const createEvent = async (eventData: EventFormData) => {
     });
 
     if (!response.ok) {
-      throw new Error("Failed to create event");
+      const errorData = await response.json();
+      console.error("Validation errors:", errorData);
+      throw new Error(
+        errorData.issues?.[0]?.message || "Failed to create event"
+      );
     }
 
     return await response.json();

@@ -7,6 +7,7 @@ import DescriptionInput from "./DescriptionInput";
 import EventOptions from "./EventOptions";
 import { Button } from "../../components/ui/button";
 import { createEvent } from "../../services/event.service";
+import { useNavigate } from "react-router-dom";
 
 const EventForm: React.FC = () => {
   const [formData, setFormData] = useState<EventFormData>({
@@ -23,17 +24,27 @@ const EventForm: React.FC = () => {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError(null);
+
     try {
       const response = await createEvent(formData);
       console.log("Event created successfully:", response);
-      // You might want to show a success message or redirect
+
+      // Open event detail page in new tab
+      const eventDetailUrl = `/events/${response.id}`;
+      window.open(eventDetailUrl, "_blank");
+
+      // Optionally, navigate to events list in current tab
+      navigate("/events");
     } catch (error) {
       console.error("Failed to create event:", error);
-      // You might want to show an error message
+      setError(error instanceof Error ? error.message : "An error occurred");
     } finally {
       setIsSubmitting(false);
     }
@@ -50,7 +61,7 @@ const EventForm: React.FC = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="w-full max-w-4xl mx-auto min-h-[600px] flex flex-col px-4"
+      className="w-full max-w-4xl mx-auto min-h-[600px] flex flex-col px-4 h-screen justify-center"
     >
       <div className="flex flex-col lg:flex-row lg:gap-12">
         <div className="w-full lg:w-1/3 mb-6 lg:mb-0">
@@ -102,6 +113,8 @@ const EventForm: React.FC = () => {
             tickets={formData.tickets}
             onTicketsChange={(tickets) => setFormData({ ...formData, tickets })}
           />
+
+          {error && <div className="text-red-500 text-sm mt-2">{error}</div>}
 
           <div className="pt-6">
             <Button

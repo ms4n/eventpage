@@ -18,3 +18,24 @@ export interface TimeZoneInfo {
   offset: string;
   name: string;
 }
+
+export interface Event {
+  id: string;
+  name: string;
+  description?: string;
+  start_date: string;
+  end_date: string;
+  bg_color: string;
+  is_public: boolean;
+  require_approval: boolean;
+  capacity: string;
+  location?: string;
+  tickets: {
+    id: string;
+    event_id: string;
+    is_free: boolean;
+    price?: number;
+  }[];
+  created_at: string;
+  updated_at: string;
+}
