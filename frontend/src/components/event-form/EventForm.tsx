@@ -5,7 +5,8 @@ import DateTimePicker from "./DateTimePicker";
 import LocationPicker from "./LocationPicker";
 import DescriptionInput from "./DescriptionInput";
 import EventOptions from "./EventOptions";
-import { Button } from "@/components/ui/button";
+import { Button } from "../../components/ui/button";
+import { createEvent } from "../../services/event.service";
 
 const EventForm: React.FC = () => {
   const [formData, setFormData] = useState<EventFormData>({
@@ -21,10 +22,21 @@ const EventForm: React.FC = () => {
     },
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log(formData);
+    setIsSubmitting(true);
+    try {
+      const response = await createEvent(formData);
+      console.log("Event created successfully:", response);
+      // You might want to show a success message or redirect
+    } catch (error) {
+      console.error("Failed to create event:", error);
+      // You might want to show an error message
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleStartDateChange = (date: Date) => {
@@ -88,9 +100,7 @@ const EventForm: React.FC = () => {
               setFormData({ ...formData, capacity })
             }
             tickets={formData.tickets}
-            onTicketsChange={(tickets) =>
-              setFormData({ ...formData, tickets })
-            }
+            onTicketsChange={(tickets) => setFormData({ ...formData, tickets })}
           />
 
           <div className="pt-6">
@@ -98,8 +108,9 @@ const EventForm: React.FC = () => {
               type="submit"
               className="w-full bg-white text-black hover:bg-white/90 font-semibold"
               size="lg"
+              disabled={isSubmitting}
             >
-              Create Event
+              {isSubmitting ? "Creating Event..." : "Create Event"}
             </Button>
           </div>
         </div>
