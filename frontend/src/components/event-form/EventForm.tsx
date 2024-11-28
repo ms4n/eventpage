@@ -14,7 +14,7 @@ const EventForm: React.FC = () => {
     name: "",
     startDate: new Date(),
     endDate: new Date(),
-    bgColor: "#FFFFFF",
+    bgColor: "#333333",
     isPublic: true,
     requireApproval: false,
     capacity: "unlimited",

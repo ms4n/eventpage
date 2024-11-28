@@ -2,11 +2,14 @@ import React, { useState, useRef, useEffect } from "react";
 import { HexColorPicker, HexColorInput } from "react-colorful";
 
 interface BgColorPickerProps {
-  color: string;
+  color?: string;
   onChange: (color: string) => void;
 }
 
-const BgColorPicker: React.FC<BgColorPickerProps> = ({ color, onChange }) => {
+const BgColorPicker: React.FC<BgColorPickerProps> = ({
+  color = "#333333",
+  onChange,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const pickerRef = useRef<HTMLDivElement>(null);
 
@@ -34,13 +37,12 @@ const BgColorPicker: React.FC<BgColorPickerProps> = ({ color, onChange }) => {
           backgroundColor: color,
           border: "2px solid rgba(255, 255, 255, 0.3)",
           backdropFilter: "blur(10px)",
+          cursor: "pointer",
         }}
         onClick={() => setIsOpen((prev) => !prev)}
       ></div>
       {isOpen && (
-        <div
-          className="absolute left-0 mt-2 z-10 bg-white p-3 rounded-lg shadow-lg w-full lg:w-[300px]"
-        >
+        <div className="absolute left-0 mt-2 z-10 bg-white p-3 rounded-lg shadow-lg w-full lg:w-[300px]">
           <HexColorPicker
             color={color}
             onChange={onChange}
